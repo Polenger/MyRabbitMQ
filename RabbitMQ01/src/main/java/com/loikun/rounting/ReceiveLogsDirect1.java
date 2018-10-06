@@ -8,14 +8,14 @@ import java.util.concurrent.TimeoutException;
 public class ReceiveLogsDirect1 {
     private static final String EXCHANGE_NAME = "direct_logs";
 
-    private static final String[] routingKeys = new String[]{"error", "debug"};
+    private static final String[] routingKeys = new String[]{"ERROR", "DEBUG"};
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
-        // 声明交换机
-        channel.exchangeDeclare(EXCHANGE_NAME, "direct");
+        // 声明采用direct模式的交换机
+        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
         // 获取队列名称
         String queue = channel.queueDeclare().getQueue();
         // 根据路由器关键字进行绑定
