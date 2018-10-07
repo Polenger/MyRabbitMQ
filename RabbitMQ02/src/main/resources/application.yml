@@ -1,0 +1,3 @@
+# RabbitMQ 采用默认设置logging:
+logging:
+  level: debug
