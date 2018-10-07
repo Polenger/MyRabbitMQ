@@ -1,11 +1,12 @@
-package com.loikun.spring.demo1;
+package com.loikun.spring.hello;
 
+import com.loikun.spring.config.RabbitConfig;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@RabbitListener(queues = "hello")
+@RabbitListener(queues = RabbitConfig.QUEUE_NAME)
 public class Receiver {
 
 

@@ -1,8 +1,10 @@
-package com.loikun.spring.demo1;
+package com.loikun.spring.hello;
 
+import com.loikun.spring.config.RabbitConfig;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,10 +18,11 @@ public class Sender {
     private RabbitTemplate template;
 
     @Autowired
+    @Qualifier(value = RabbitConfig.QUEUE_NAME)
     private Queue queue;
 
     @GetMapping("/send")
-    public Map<String,Object> send(){
+    public Map<String, Object> send(){
         Map<String, Object> map = new HashMap<>();
         // 需要发送的消息
         String message="Hello world";
