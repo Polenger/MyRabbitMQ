@@ -31,8 +31,7 @@ public class ExSender {
         }
         builder.append(Integer.toString(++count));
         String message = builder.toString();
-        template.convertAndSend(fanout.getName(), "", message);
+        template.convertAndSend(fanout.getName(),null, message);
         System.out.println(getClass().getSimpleName() + "  [x] Sent '" + message + "'");
     }
-
 }
